@@ -1,0 +1,2 @@
+c = true || (false || true);
+print c;
