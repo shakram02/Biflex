@@ -6,3 +6,7 @@
 
 # Unignore all dirs
 !*/
+
+# Ignore all C files as they're auto generated
+*.c
+*.h
