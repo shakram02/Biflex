@@ -1,4 +1,4 @@
-# Micro Parser
+# Micro Parser (aka. Biflex)
 
 Based on [this](http://www.bowaggoner.com/writeups/jumpstart/flexbison/jumpstart_flexbison.pdf) tutorial, this project completes phase3 our mini compiler
 
