@@ -1,2 +1,4 @@
-c = true || (false || (true && false));
+c = true || false || true && false;
 print c;
+d = true && true || false;
+print d;

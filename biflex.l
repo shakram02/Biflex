@@ -6,6 +6,7 @@
 using namespace std;
 #include "biflex.tab.h"  // output of bison on example1.y
 void yyerror(char*);
+//extern int yy_flex_debug;
 int yyparse(void);
 %}
 
@@ -32,7 +33,7 @@ int yyparse(void);
 "!"                    return NOTOP;
 %%
 
-void yyerror(char* str) {printf("Parse Error: \n%s\n",str);}
+void yyerror(char* s) {printf("Parse Error:%s\n",s);}
 int yywrap(void) { }
 int main(int num_args, char** args) {
   if(num_args != 2) {printf("usage: ./parser1 filename\n"); exit(0);}
