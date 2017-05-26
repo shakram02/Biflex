@@ -538,14 +538,14 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "example1.l"
-#line 2 "example1.l"
+#line 1 "biflex.l"
+#line 2 "biflex.l"
   // FLEX file example1.l
 #include <cstdio>
 #include <cstdlib>
 #include <string>
 using namespace std;
-#include "example1.tab.h"  // output of bison on example1.y
+#include "biflex.tab.h"  // output of bison on example1.y
 void yyerror(char*);
 int yyparse(void);
 #line 551 "lex.yy.c"
@@ -766,7 +766,7 @@ YY_DECL
 		}
 
 	{
-#line 12 "example1.l"
+#line 12 "biflex.l"
 
 
 #line 772 "lex.yy.c"
@@ -829,92 +829,92 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 14 "example1.l"
+#line 14 "biflex.l"
 ;  // do nothing on whitespace
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 15 "example1.l"
+#line 15 "biflex.l"
 return PRINT;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 16 "example1.l"
+#line 16 "biflex.l"
 {yylval.bool_val = true; return BOOLEAN;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 17 "example1.l"
+#line 17 "biflex.l"
 {yylval.bool_val = false; return BOOLEAN;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 19 "example1.l"
+#line 19 "biflex.l"
 {yylval.str_val = new string(yytext); return VARIABLE;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 20 "example1.l"
+#line 20 "biflex.l"
 {yylval.double_val = atof(yytext); return NUMBER;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 22 "example1.l"
+#line 22 "biflex.l"
 return EQUALS;
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 23 "example1.l"
+#line 23 "biflex.l"
 return PLUS;
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 24 "example1.l"
+#line 24 "biflex.l"
 return MINUS;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 25 "example1.l"
+#line 25 "biflex.l"
 return ASTERISK;
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 26 "example1.l"
+#line 26 "biflex.l"
 return FSLASH;
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 27 "example1.l"
+#line 27 "biflex.l"
 return LPAREN;
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 28 "example1.l"
+#line 28 "biflex.l"
 return RPAREN;
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 29 "example1.l"
+#line 29 "biflex.l"
 return SEMICOLON;
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 30 "example1.l"
+#line 30 "biflex.l"
 return ANDOP;
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 31 "example1.l"
+#line 31 "biflex.l"
 return OROP;
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 32 "example1.l"
+#line 32 "biflex.l"
 return NOTOP;
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 33 "example1.l"
+#line 33 "biflex.l"
 ECHO;
 	YY_BREAK
 #line 920 "lex.yy.c"
@@ -1918,7 +1918,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 33 "example1.l"
+#line 33 "biflex.l"
 
 
 void yyerror(char* str) {printf("Parse Error: \n%s\n",str);}

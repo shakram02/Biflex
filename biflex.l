@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <string>
 using namespace std;
-#include "example1.tab.h"  // output of bison on example1.y
+#include "biflex.tab.h"  // output of bison on example1.y
 void yyerror(char*);
 int yyparse(void);
 %}

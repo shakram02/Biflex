@@ -62,7 +62,7 @@
 
 
 /* Copy the first part of user declarations.  */
-#line 2 "example1.y" /* yacc.c:339  */
+#line 2 "biflex.y" /* yacc.c:339  */
 
 #include <cstdio>
 #include <cstdlib>
@@ -75,7 +75,7 @@ extern void yyerror(char*);
 void Div0Error(void);
 void UnknownVarError(string s);
 
-#line 79 "example1.tab.c" /* yacc.c:339  */
+#line 79 "biflex.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -94,9 +94,9 @@ void UnknownVarError(string s);
 #endif
 
 /* In a future release of Bison, this section will be replaced
-   by #include "example1.tab.h".  */
-#ifndef YY_YY_EXAMPLE1_TAB_H_INCLUDED
-# define YY_YY_EXAMPLE1_TAB_H_INCLUDED
+   by #include "biflex.tab.h".  */
+#ifndef YY_YY_BIFLEX_TAB_H_INCLUDED
+# define YY_YY_BIFLEX_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -133,14 +133,14 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 15 "example1.y" /* yacc.c:355  */
+#line 15 "biflex.y" /* yacc.c:355  */
 
   int     int_val;
   double  double_val;
   string* str_val;
   bool    bool_val;
 
-#line 144 "example1.tab.c" /* yacc.c:355  */
+#line 144 "biflex.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -153,11 +153,11 @@ extern YYSTYPE yylval;
 
 int yyparse (void);
 
-#endif /* !YY_YY_EXAMPLE1_TAB_H_INCLUDED  */
+#endif /* !YY_YY_BIFLEX_TAB_H_INCLUDED  */
 
 /* Copy the second part of user declarations.  */
 
-#line 161 "example1.tab.c" /* yacc.c:358  */
+#line 161 "biflex.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -1253,109 +1253,109 @@ yyreduce:
   switch (yyn)
     {
         case 5:
-#line 38 "example1.y" /* yacc.c:1646  */
+#line 38 "biflex.y" /* yacc.c:1646  */
     {printf("%lf\n",(yyvsp[-1].double_val));}
-#line 1259 "example1.tab.c" /* yacc.c:1646  */
+#line 1259 "biflex.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 39 "example1.y" /* yacc.c:1646  */
+#line 39 "biflex.y" /* yacc.c:1646  */
     {vars[*(yyvsp[-3].str_val)] = (yyvsp[-1].double_val); delete (yyvsp[-3].str_val);}
-#line 1265 "example1.tab.c" /* yacc.c:1646  */
+#line 1265 "biflex.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 40 "example1.y" /* yacc.c:1646  */
+#line 40 "biflex.y" /* yacc.c:1646  */
     {vars[*(yyvsp[-3].str_val)] = (yyvsp[-1].bool_val); delete (yyvsp[-3].str_val);}
-#line 1271 "example1.tab.c" /* yacc.c:1646  */
+#line 1271 "biflex.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 42 "example1.y" /* yacc.c:1646  */
+#line 42 "biflex.y" /* yacc.c:1646  */
     {(yyval.double_val) = (yyvsp[-2].double_val) + (yyvsp[0].double_val);printf("parsing addition expr\n");}
-#line 1277 "example1.tab.c" /* yacc.c:1646  */
+#line 1277 "biflex.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 43 "example1.y" /* yacc.c:1646  */
+#line 43 "biflex.y" /* yacc.c:1646  */
     {(yyval.double_val) = (yyvsp[-2].double_val) - (yyvsp[0].double_val);printf("parsing subtraction expr\n");}
-#line 1283 "example1.tab.c" /* yacc.c:1646  */
+#line 1283 "biflex.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 44 "example1.y" /* yacc.c:1646  */
+#line 44 "biflex.y" /* yacc.c:1646  */
     {(yyval.double_val) = (yyvsp[0].double_val);}
-#line 1289 "example1.tab.c" /* yacc.c:1646  */
+#line 1289 "biflex.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
-#line 45 "example1.y" /* yacc.c:1646  */
+#line 45 "biflex.y" /* yacc.c:1646  */
     {(yyval.double_val) = (yyvsp[-2].double_val) * (yyvsp[0].double_val);}
-#line 1295 "example1.tab.c" /* yacc.c:1646  */
+#line 1295 "biflex.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 47 "example1.y" /* yacc.c:1646  */
+#line 47 "biflex.y" /* yacc.c:1646  */
     {if((yyvsp[0].double_val) == 0) Div0Error(); else (yyval.double_val) = (yyvsp[-2].double_val) / (yyvsp[0].double_val);}
-#line 1301 "example1.tab.c" /* yacc.c:1646  */
+#line 1301 "biflex.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 48 "example1.y" /* yacc.c:1646  */
+#line 48 "biflex.y" /* yacc.c:1646  */
     {(yyval.double_val) = (yyvsp[0].double_val);}
-#line 1307 "example1.tab.c" /* yacc.c:1646  */
+#line 1307 "biflex.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 50 "example1.y" /* yacc.c:1646  */
+#line 50 "biflex.y" /* yacc.c:1646  */
     {if(!vars.count(*(yyvsp[0].str_val))) UnknownVarError(*(yyvsp[0].str_val)); else (yyval.double_val) = vars[*(yyvsp[0].str_val)]; delete (yyvsp[0].str_val);}
-#line 1313 "example1.tab.c" /* yacc.c:1646  */
+#line 1313 "biflex.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 51 "example1.y" /* yacc.c:1646  */
+#line 51 "biflex.y" /* yacc.c:1646  */
     {(yyval.double_val) = (yyvsp[0].double_val);}
-#line 1319 "example1.tab.c" /* yacc.c:1646  */
+#line 1319 "biflex.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 52 "example1.y" /* yacc.c:1646  */
+#line 52 "biflex.y" /* yacc.c:1646  */
     {(yyval.double_val) = (yyvsp[-1].double_val);}
-#line 1325 "example1.tab.c" /* yacc.c:1646  */
+#line 1325 "biflex.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 54 "example1.y" /* yacc.c:1646  */
+#line 54 "biflex.y" /* yacc.c:1646  */
     { (yyval.bool_val) = (yyvsp[-2].bool_val) || (yyvsp[0].bool_val); }
-#line 1331 "example1.tab.c" /* yacc.c:1646  */
+#line 1331 "biflex.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 55 "example1.y" /* yacc.c:1646  */
+#line 55 "biflex.y" /* yacc.c:1646  */
     { (yyval.bool_val) = (yyvsp[-2].bool_val) && (yyvsp[0].bool_val); printf("anding\n"); }
-#line 1337 "example1.tab.c" /* yacc.c:1646  */
+#line 1337 "biflex.tab.c" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 56 "example1.y" /* yacc.c:1646  */
+#line 56 "biflex.y" /* yacc.c:1646  */
     { (yyval.bool_val) = (yyvsp[-1].bool_val); }
-#line 1343 "example1.tab.c" /* yacc.c:1646  */
+#line 1343 "biflex.tab.c" /* yacc.c:1646  */
     break;
 
   case 20:
-#line 58 "example1.y" /* yacc.c:1646  */
+#line 58 "biflex.y" /* yacc.c:1646  */
     {if(!vars.count(*(yyvsp[0].str_val))) UnknownVarError(*(yyvsp[0].str_val)); else (yyval.bool_val) = vars[*(yyvsp[0].str_val)]; delete (yyvsp[0].str_val);}
-#line 1349 "example1.tab.c" /* yacc.c:1646  */
+#line 1349 "biflex.tab.c" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 59 "example1.y" /* yacc.c:1646  */
+#line 59 "biflex.y" /* yacc.c:1646  */
     { (yyval.bool_val) = (yyvsp[0].bool_val);printf("bool found\n");}
-#line 1355 "example1.tab.c" /* yacc.c:1646  */
+#line 1355 "biflex.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1359 "example1.tab.c" /* yacc.c:1646  */
+#line 1359 "biflex.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1583,7 +1583,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 61 "example1.y" /* yacc.c:1906  */
+#line 61 "biflex.y" /* yacc.c:1906  */
 
 
 void Div0Error(void) {printf("Error: division by zero\n"); exit(0);}
