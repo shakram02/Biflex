@@ -19,7 +19,7 @@ void UnknownVarError(string s);
   bool    bool_val;
 }
 
-%token <int_val>    PLUS MINUS ASTERISK FSLASH EQUALS PRINT LPAREN RPAREN SEMICOLON OROP ANDOP NOTOP
+%token <int_val>    PLUS MINUS ASTERISK FSLASH EQUALS PRINT LPAREN RPAREN SEMICOLON OROP ANDOP NOTOP IF ELSE LBRACE RBRACE GT ST GTE STE EQ NEQ
 %token <str_val>    VARIABLE
 %token <double_val> NUMBER
 %token <bool_val>   BOOLEAN
@@ -40,7 +40,9 @@ parsetree:    lines;
 lines:        lines line | line;
 line:         PRINT expression SEMICOLON           {printf("%lf\n",$2);}
             | VARIABLE EQUALS expression SEMICOLON {vars[*$1] = $3; delete $1;}
-            | VARIABLE EQUALS bool_exp SEMICOLON   {vars[*$1] = $3; delete $1;};
+            | VARIABLE EQUALS bool_exp SEMICOLON   {vars[*$1] = $3; delete $1;}
+            | if_stmt
+            |;
 
 expression:   expression PLUS inner1               {$$ = $1 + $3;printf("parsing addition expr\n");}
             | expression MINUS inner1              {$$ = $1 - $3;printf("parsing subtraction expr\n");}
@@ -69,6 +71,16 @@ bool_in2: VARIABLE
           {if(!vars.count(*$1)) UnknownVarError(*$1); else $$ = vars[*$1]; delete $1;}
           | BOOLEAN                               {$$ = $1;}
           | LPAREN bool_exp RPAREN                {$$ = $2;}  /* Expand an expression within parens */
+
+relop: GT | GTE | ST | STE | EQ | NEQ;
+condition: expression relop expression {/* TODO: generate code */};
+if: IF LPAREN condition RPAREN LBRACE lines RBRACE {/* TODO: generate code */};
+if_else: if ELSE LBRACE lines RBRACE;
+else_if: ELSE if;
+if_stmt: if
+    | if
+    | if_else
+    | if else_if;
 %%
 
 void Div0Error(void) {printf("Error: division by zero\n"); exit(0);}
