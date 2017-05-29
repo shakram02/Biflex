@@ -1,7 +1,29 @@
-a = 12;
-b = 15;
+boolean c = false || true && false;
+print c;
+boolean d = true && true || false;
+print d;
+boolean e = c;
+print e;
+
+int a = 5;
+int b = 6;
+
 if(a <= b){
 print a;
 } else if (a > b) {
 print b;
 }
+
+for ( int i = 0; i < 10;  i = i + 1) 
+{
+	print d;
+	int f = a + 8;
+	print f;
+}
+
+int i = 0;
+while (i < 10) {
+	print i;
+	i = i + 1;
+}
+

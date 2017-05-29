@@ -18,7 +18,10 @@ int yyparse(void);
 "false"                {yylval.bool_val = false; return BOOLEAN;}
 "if"                   return IF;
 "else"                 return ELSE;
+"while"                return WHILE;
+"for"                  return FOR;
 
+byte|short|int|long|float|double|char|string|boolean   {yylval.str_val = new string(yytext); return TYPE;}
 [a-zA-Z][a-zA-Z0-9]*   {yylval.str_val = new string(yytext); return VARIABLE;}
 [0-9][0-9]*(.[0-9]+)?  {yylval.double_val = atof(yytext); return NUMBER;}
 
