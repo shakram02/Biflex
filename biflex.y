@@ -38,8 +38,8 @@ void UnknownVarError(string s);
 
 parsetree:    lines;
 lines:        lines line | line;
-line:         PRINT expression SEMICOLON           {printf("%lf\n",$2);}
-            | declaration
+line:       declaration
+            | print_stmt
             | if_stmt
             | while_stmt
             | for_stmt
@@ -115,6 +115,9 @@ for_stmt:   FOR LPAREN declaration condition SEMICOLON declaration RPAREN
 		LBRACE
 			lines
 		RBRACE;
+
+print_stmt:
+	PRINT LPAREN expression RPAREN SEMICOLON {printf("%lf\n",$3);}
 %%
 
 void Div0Error(void) {printf("Error: division by zero\n"); exit(0);}

@@ -13,7 +13,7 @@ int yyparse(void);
 %%
 
 [ \t\n]+               ;  // do nothing on whitespace
-"print"                return PRINT;
+"System.out.println"   return PRINT;
 "true"                 {yylval.bool_val = true; return BOOLEAN;}
 "false"                {yylval.bool_val = false; return BOOLEAN;}
 "if"                   return IF;
@@ -49,7 +49,7 @@ byte|short|int|long|float|double|char|string|boolean   {yylval.str_val = new str
 void yyerror(char* s) {printf("Parse Error:%s\n",s);}
 int yywrap(void) { }
 int main(int num_args, char** args) {
-  if(num_args != 2) {printf("usage: ./parser1 filename\n"); exit(0);}
+  if(num_args != 2) {printf("usage: ./parser filename\n"); exit(0);}
   FILE* file = fopen(args[1],"r");
   if(file == NULL) {printf("couldn't open %s\n", args[1]); exit(0);}
   yyin = file;
