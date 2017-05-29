@@ -10,3 +10,10 @@
 # Ignore all C files as they're auto generated
 *.c
 *.h
+
+# ignore jetbrains folder
+.idea
+.idea/*
+
+cmake-build-debug
+biflex.output

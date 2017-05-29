@@ -16,6 +16,8 @@ int yyparse(void);
 "print"                return PRINT;
 "true"                 {yylval.bool_val = true; return BOOLEAN;}
 "false"                {yylval.bool_val = false; return BOOLEAN;}
+"if"                   return IF;
+"else"                 return ELSE;
 
 [a-zA-Z][a-zA-Z0-9]*   {yylval.str_val = new string(yytext); return VARIABLE;}
 [0-9][0-9]*(.[0-9]+)?  {yylval.double_val = atof(yytext); return NUMBER;}
@@ -31,6 +33,14 @@ int yyparse(void);
 "&&"                   return ANDOP;
 "||"                   return OROP;
 "!"                    return NOTOP;
+"{"                    return LBRACE;
+"}"                    return RBRACE;
+">"                    return GT;
+"<"                    return ST;
+">="                   return GTE;
+"<="                   return STE;
+"=="                   return EQ;
+"!="                   return NEQ;
 %%
 
 void yyerror(char* s) {printf("Parse Error:%s\n",s);}
@@ -39,7 +49,7 @@ int main(int num_args, char** args) {
   if(num_args != 2) {printf("usage: ./parser1 filename\n"); exit(0);}
   FILE* file = fopen(args[1],"r");
   if(file == NULL) {printf("couldn't open %s\n", args[1]); exit(0);}
-  yyin = file;  // now flex reads from file
+  yyin = file;
   yyparse();
   fclose(file);
 }
