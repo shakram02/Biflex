@@ -1,13 +1,12 @@
   // FLEX file example1.l
 %{
-#include <cstdio>
-#include <cstdlib>
-#include <string>
-using namespace std;
-#include "biflex.tab.h"  // output of bison on example1.y
-void yyerror(char*);
-//extern int yy_flex_debug;
-int yyparse(void);
+ #include <cstdio>
+ #include <string>
+ using namespace std;
+ #include "biflex.tab.h"  // output of bison on example1.y
+ 
+ void yyerror(char*);
+// int yyparse(void);
 %}
 
 %%
@@ -44,14 +43,15 @@ byte|short|int|long|float|double|char|string|boolean   {yylval.str_val = new str
 "<="                   return STE;
 "=="                   return EQ;
 "!="                   return NEQ;
+
 %%
 
-void yyerror(char* s) {printf("Parse Error:%s\n",s);}
+void yyerror(char* s) {printf("Parse Error: %s\n",s);}
 int yywrap(void) { }
 int main(int num_args, char** args) {
-  if(num_args != 2) {printf("usage: ./parser filename\n"); exit(0);}
+  if(num_args != 2) {printf("Usage: ./parser filename\n"); exit(0);}
   FILE* file = fopen(args[1],"r");
-  if(file == NULL) {printf("couldn't open %s\n", args[1]); exit(0);}
+  if(file == NULL) {printf("Couldn't open '%s', Reason: %s\n", args[1], strerror(errno)); exit(0);}
   yyin = file;
   yyparse();
   fclose(file);
