@@ -38,6 +38,7 @@ void UnknownVarError(string s);
 %type <bool_val> bool_exp;
 %type <bool_val> bool_in;
 %type <bool_val> bool_in2;
+%type <bool_val> condition;
 
 %start parsetree
 
@@ -75,9 +76,8 @@ bool_exp:   NOTOP bool_exp                         	{$$ = !$2;}
 bool_in:   bool_in OROP bool_in2                   	{$$ = $1 || $3;}
            | bool_in2                              	{$$ = $1;};
 
-bool_in2: VARIABLE
-          {if(!vars.count(*$1)) UnknownVarError(*$1); else $$ = vars[*$1]; delete $1;}
-          | BOOLEAN                               	{$$ = $1;}
+bool_in2: BOOLEAN                               	{$$ = $1;}
+          | condition                                   {$$ = $1;}
           | LPAREN bool_exp RPAREN                	{$$ = $2;}; /* Expand an expression within parens */
 
 
@@ -92,24 +92,26 @@ declaration_end:
 	SEMICOLON
 	| ;
 
-relop:
-	GT | GTE | ST | STE | EQ | NEQ;
-
 condition:
-	expression relop expression;
+	expression GT expression {$$ = $1 > $3;}
+	| expression GTE expression {$$ = $1 >= $3;}
+	| expression ST expression {$$ = $1 < $3;}
+	| expression STE expression {$$ = $1 <= $3;}
+	| expression EQ expression {$$ = $1 == $3;}
+	| expression NEQ expression {$$ = $1 != $3;};
 
 if:
-	IF LPAREN condition RPAREN LBRACE lines RBRACE;
+	IF LPAREN condition RPAREN LBRACE lines RBRACE {if ($3) {$5;}};
 
 if_else:
-	if ELSE LBRACE lines RBRACE;
+	if ELSE LBRACE lines RBRACE {if (true) {$3;}};
 
 else_if:
-	ELSE if;
+	ELSE if ;
 
 if_stmt: if
-    | if_else
-    | if else_if;
+        | if_else
+        | if else_if;
 
 while_stmt: WHILE LPAREN condition RPAREN
 		LBRACE
@@ -122,7 +124,7 @@ for_stmt:   FOR LPAREN declaration condition SEMICOLON declaration RPAREN
 		RBRACE;
 
 print_stmt:
-	PRINT LPAREN expression RPAREN SEMICOLON 	{printf("%.4f\n",$3);};
+	PRINT LPAREN expression RPAREN SEMICOLON 	{printf("%.4f\n", $3);};
 %%
 
 void Div0Error(void) {printf("Error: division by zero\n"); exit(0);}
